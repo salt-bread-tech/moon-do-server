@@ -1,4 +1,4 @@
 package beom.moondoserver.service;
 
-public class LoginService {
+public interface LoginService {
 }
