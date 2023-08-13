@@ -4,8 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0cc1dbed-17ef-4a16-bcb8-18f94d8a703a" name="변경" comment="">
+    <list default="true" id="0cc1dbed-17ef-4a16-bcb8-18f94d8a703a" name="변경" comment="변경">
+      <change afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/ProblemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/controller/ProblemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/controller/ProblemController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +52,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2T65RpXNwcNSTJPYkmvRYzASGdf" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
@@ -53,15 +63,27 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/user/OneDrive/바탕 화면/GitHub/moon-do-server",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/git/plan-to-plant-server",
     "project.structure.last.edited": "프로젝트",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "spring.configuration.checksum": "c091a93f08e65f8e56a7252a498ffc42"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.MoonDoServerApplication">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="moon-do-server" />
       <method v="2">
@@ -75,6 +97,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MoonDoServerApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="moon-do-server.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="beom.moondoserver.MoonDoServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MoonDoServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" />
+      <module name="moon-do-server.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="beom.moondoserver.MoonDoServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -84,7 +121,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1690350686787</updated>
+      <workItem from="1691944878984" duration="47000" />
+      <workItem from="1691944936586" duration="2455000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
