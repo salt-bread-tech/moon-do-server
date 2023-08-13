@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cc1dbed-17ef-4a16-bcb8-18f94d8a703a" name="변경" comment="변경">
-      <change afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/ProblemServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/model/dto/response/UserInfoResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/controller/ProblemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/controller/ProblemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/model/entity/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +120,7 @@
       <option name="presentableId" value="Default" />
       <updated>1690350686787</updated>
       <workItem from="1691944878984" duration="47000" />
-      <workItem from="1691944936586" duration="2455000" />
+      <workItem from="1691944936586" duration="5913000" />
     </task>
     <servers />
   </component>
