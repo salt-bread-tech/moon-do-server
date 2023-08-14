@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/problems")
 public class ProblemController {
-    // 문제 만들기, 문제 저장
     final ProblemService problemService;
 
     @Autowired
@@ -22,7 +21,7 @@ public class ProblemController {
         this.problemService = problemService;
     }
 
-    @PostMapping("/creation") //문제 생성 API
+    @PostMapping("/creation")
     public List<CreateProblemResponse> createProblem(@RequestBody CreateProblemRequest request){
         return problemService.createProblem(request);
     }
