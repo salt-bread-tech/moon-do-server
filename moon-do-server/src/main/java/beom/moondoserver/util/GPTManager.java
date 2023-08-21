@@ -35,11 +35,18 @@ public class GPTManager {
         mediaType = "application/json; charset=UTF-8";
     }
 
-    public ChatGPTResponse getProblem(ChatGPTRequest request) {
+    public ChatGPTResponse getProblem(String prompt) {
         HttpHeaders headers = new HttpHeaders();
+        ChatGPTRequest chatGPTRequest = ChatGPTRequest.builder()
+                .model(model)
+                .prompt(prompt)
+                .maxTokens(maxToken)
+                .temperature(temperature)
+                .topP(topP)
+                .build();
         headers.setContentType(MediaType.parseMediaType(mediaType));
         headers.add(authorization, bearer + apiKey);
-        HttpEntity<ChatGPTRequest> httpEntity = new HttpEntity<>(request, headers);
+        HttpEntity<ChatGPTRequest> httpEntity = new HttpEntity<>(chatGPTRequest, headers);
 
         ResponseEntity<ChatGPTResponse> responseEntity = restTemplate.postForEntity(
                 url,

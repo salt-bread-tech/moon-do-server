@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CreateProblemRequest {
     private String field;
-    private String detailed_field;
+    private String detailedField;
     private String category;
     private Integer count;
     private Integer difficulty;
