@@ -14,15 +14,27 @@ public class ProblemPaper {
     Integer problemPaperId;
 
     @ManyToOne
-    @JoinColumn(name = "problem_id")
-    Problem problem;
+    @JoinColumn(name = "user_id")
+    User user;
 
-    @Column(name = "question")
-    String question;
+    @Column(name = "title")
+    String title;
 
-    @Column(name = "answer")
-    String answer;
+    @Column(name = "field")
+    String field;
 
-    @Column(name = "explanation")
-    String explanation;
+    @Column(name = "detailed_field")
+    String detailedField;
+
+    @Column(name = "category")
+    String category;
+
+    @Column(name = "count")
+    Integer count;
+
+    @Column(name = "difficulty")
+    Integer difficulty;
+
+    @Column(name = "bookmark", columnDefinition = "boolean default false")
+    Boolean bookmark;
 }

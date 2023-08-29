@@ -23,4 +23,7 @@ public class User {
 
     @Column(name = "nickname")
     String nickname;
+
+    @Column(name = "introduction")
+    String introduction;
 }
