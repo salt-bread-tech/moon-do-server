@@ -21,6 +21,9 @@ public class Problem {
     @JoinColumn(name = "user_id")
     User user;
 
+    @Column(name = "title")
+    String title;
+
     @Column(name = "field")
     String field;
 
