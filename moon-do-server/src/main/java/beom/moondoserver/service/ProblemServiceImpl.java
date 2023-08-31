@@ -21,8 +21,8 @@ public class ProblemServiceImpl implements ProblemService {
 
     @Override
     public boolean createProblem(CreateProblemRequest request) {
-        String prompt = request.getField() + "분야의 " + request.getDetailedField() + "에 대한 "
-                + request.getCategory() + "문제를 " + request.getDifficulty() + "의 난이도로 "
+        String prompt = request.getField() + " 분야의 " + request.getDetailedField() + "에 대한 "
+                + request.getCategory() + " 문제를 " + request.getDifficulty() + "의 난이도로 "
                 + request.getCount() + "개 만큼 출제해줘.";
 
         ChatGPTResponse chatGPTResponse = gptManager.getProblem(prompt);
