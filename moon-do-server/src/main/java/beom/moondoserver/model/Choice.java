@@ -13,7 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Builder
 public class Choice implements Serializable {
-    private String text;
+    private GPTMessage message;
     private Integer index;
     @JsonProperty("finish_reason")
     private String finishReason;
