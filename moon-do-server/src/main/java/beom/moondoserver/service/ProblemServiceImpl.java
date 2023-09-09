@@ -14,10 +14,7 @@ import beom.moondoserver.util.GPTManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.StringTokenizer;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -32,7 +29,8 @@ public class ProblemServiceImpl implements ProblemService {
     public boolean createProblem(CreateProblemRequest request) {
         String prompt = request.getField() + " 분야의 " + request.getDetailedField() + "에 대한 "
                 + request.getCategory() + " 문제를 " + request.getDifficulty() + "의 난이도로 "
-                + request.getCount() + "개 만큼 출제해줘.";
+                + request.getCount() + "개 만큼 출제해줘." + " 문제 번호와 문제 사이에는 '\n'이 없어야 하고,"
+                + " 문제의 답은 각 문제의 뒤에 '\n'을 넣어서 함께 출력하며, 각 문제의 끝마다 ';'를 넣어 문제가 끝났음을 알려줘.";
 
         ChatGPTResponse chatGPTResponse = gptManager.getProblem(prompt);
         parseProblem(chatGPTResponse);
@@ -49,19 +47,31 @@ public class ProblemServiceImpl implements ProblemService {
     }
 
     private boolean insertProblem(ChatGPTResponse chatGPTResponse) {
+        String problemString = null;
+        String answerString = null;
         Optional<ProblemPaper> optionalProblemPaper = problemPaperRepo.findById(1);
         List<String> problemList = parseProblem(chatGPTResponse);
+        HashMap<String, String> problemMap = new HashMap<>();
 
         if(optionalProblemPaper.isPresent()){
             ProblemPaper problemPaper = optionalProblemPaper.get();
-            for (String problem:problemList) {
+            for (int i = 0; i < problemList.size(); i++) {
+                if(i % 2 == 0){
+                    problemString = problemList.get(i);
+                }
+                else {
+                    answerString = problemList.get(i);
+                }
+                problemMap.put(problemString, answerString);
+            }
+            for(Map.Entry<String, String> elem : problemMap.entrySet()){
                 problemRepo.save(Problem.builder()
                         .problemPaperId(problemPaper)
-                        .question(problem)
-                        .answer("abcd")
+                        .question(elem.getKey())
+                        .answer(elem.getValue())
                         .explanation("ancd").build());
-                System.out.println("성공");
             }
+            System.out.println("DB 저장이 성공적으로 완료되었음.");
             return true;
         }
         return false;
@@ -74,21 +84,15 @@ public class ProblemServiceImpl implements ProblemService {
 
     private List<String> parseProblem(ChatGPTResponse chatGPTResponse){
         String string = chatGPTResponse.getChoices().get(0).getMessage().getContent();
-        StringTokenizer stringTokenizer = new StringTokenizer(string, "\n");
+        StringTokenizer stringTokenizer = new StringTokenizer(string, ";");
         List<String> problemResponseList = new ArrayList<>();
 
         while(stringTokenizer.hasMoreTokens()){
-            if(stringTokenizer.countTokens() % 2 == 1){
-                problemResponseList.add(stringTokenizer.nextToken());
+            StringTokenizer answerTokenizer = new StringTokenizer(stringTokenizer.nextToken(), "\n");
+            while(answerTokenizer.hasMoreTokens()){
+                String problemString = answerTokenizer.nextToken().replace("\n", "");
+                problemResponseList.add(problemString);
             }
-            else {
-                stringTokenizer.nextToken();
-            }
-        }
-
-        // 데이터가 잘 파싱되었는지 확인하는 부분, 작업 이후 삭제 예정
-        for (String problem:problemResponseList) {
-            System.out.println(problem);
         }
 
         return problemResponseList;
