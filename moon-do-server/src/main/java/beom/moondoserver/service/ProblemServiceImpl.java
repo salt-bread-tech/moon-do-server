@@ -4,12 +4,19 @@ import beom.moondoserver.model.dto.request.CreateProblemRequest;
 import beom.moondoserver.model.dto.request.GetProblemRequest;
 import beom.moondoserver.model.dto.request.GetSolutionRequest;
 import beom.moondoserver.model.dto.response.*;
+import beom.moondoserver.model.entity.Problem;
+import beom.moondoserver.model.entity.ProblemPaper;
+import beom.moondoserver.model.entity.User;
+import beom.moondoserver.repository.ProblemPaperRepo;
+import beom.moondoserver.repository.ProblemRepo;
+import beom.moondoserver.repository.UserRepo;
 import beom.moondoserver.util.GPTManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.StringTokenizer;
 
 @Service
@@ -17,6 +24,9 @@ import java.util.StringTokenizer;
 public class ProblemServiceImpl implements ProblemService {
 
     GPTManager gptManager = new GPTManager();
+    private final ProblemRepo problemRepo;
+    private final UserRepo userRepo;
+    private final ProblemPaperRepo problemPaperRepo;
 
     @Override
     public boolean createProblem(CreateProblemRequest request) {
@@ -39,9 +49,26 @@ public class ProblemServiceImpl implements ProblemService {
     }
 
     private boolean insertProblem(ChatGPTResponse chatGPTResponse) {
-        
-        // response 를 파싱해서 DB에 넣는 과정 필요
-        
+        Optional<ProblemPaper> optionalProblemPaper = problemPaperRepo.findById(1);
+        List<String> problemList = parseProblem(chatGPTResponse);
+
+        if(optionalProblemPaper.isPresent()){
+            ProblemPaper problemPaper = optionalProblemPaper.get();
+            for (String problem:problemList) {
+                problemRepo.save(Problem.builder()
+                        .problemPaperId(problemPaper)
+                        .question(problem)
+                        .answer("abcd")
+                        .explanation("ancd").build());
+                System.out.println("성공");
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private boolean insertProblemPaper(ChatGPTResponse chatGPTResponse){
+
         return true;
     }
 
