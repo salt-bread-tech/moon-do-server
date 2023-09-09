@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0cc1dbed-17ef-4a16-bcb8-18f94d8a703a" name="변경" comment="변경">
-      <change afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/model/GPTMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/model/dto/request/ChatGPTRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/model/dto/request/ChatGPTRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/ProblemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/ProblemServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/util/GPTManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/util/GPTManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/util/KeySet.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/util/KeySet.java" afterDir="false" />
-    </list>
+    <list default="true" id="0cc1dbed-17ef-4a16-bcb8-18f94d8a703a" name="변경" comment="변경" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,45 +62,32 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/git/moon-do-server&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;프로젝트&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;77c23a11bcf75ef78e09f3bc548e3889&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/git/spring-security-oauth-practice/spring-social",
+    "project.structure.last.edited": "프로젝트",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "spring.configuration.checksum": "8f494a380fcb078044d4b51805dcf77e"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.MoonDoServerApplication">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="moon-do-server" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="moon-do-server" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MoonDoServerApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="moon-do-server.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="beom.moondoserver.MoonDoServerApplication" />
@@ -141,6 +121,7 @@
       <updated>1690350686787</updated>
       <workItem from="1691944878984" duration="47000" />
       <workItem from="1691944936586" duration="5913000" />
+      <workItem from="1694247309906" duration="907000" />
     </task>
     <servers />
   </component>
