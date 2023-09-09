@@ -11,6 +11,7 @@ import lombok.*;
 public class ProblemPaper {
     @Id
     @Column(nullable = false, name = "problem_paper_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer problemPaperId;
 
     @ManyToOne
@@ -35,6 +36,6 @@ public class ProblemPaper {
     @Column(name = "difficulty")
     Integer difficulty;
 
-    @Column(name = "bookmark", columnDefinition = "boolean default false")
-    Boolean bookmark;
+    @Column(name = "bookmarked", columnDefinition = "boolean default false")
+    Boolean bookmarked;
 }

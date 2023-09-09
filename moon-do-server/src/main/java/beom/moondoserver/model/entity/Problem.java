@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class Problem {
     @Id
     @Column(name = "problem_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer problemId;
 
     @ManyToOne

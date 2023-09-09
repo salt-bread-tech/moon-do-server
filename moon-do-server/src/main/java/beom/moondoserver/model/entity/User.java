@@ -1,8 +1,6 @@
 package beom.moondoserver.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +14,8 @@ import lombok.NoArgsConstructor;
 public class User {
     @Id
     @Column(name = "user_id")
-    String userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer userId;
 
     @Column(name = "password")
     String password;

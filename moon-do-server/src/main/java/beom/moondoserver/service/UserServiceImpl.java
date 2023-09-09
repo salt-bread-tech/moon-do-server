@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepo userRepo;
 
-    public UserInfoResponse getUserInfo(String userId) {
+    public UserInfoResponse getUserInfo(Integer userId) {
         Optional<User> optionalUser = userRepo.findById(userId);
         UserInfoResponse userInfoResponse = new UserInfoResponse();
 
