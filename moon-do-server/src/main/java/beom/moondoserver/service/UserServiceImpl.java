@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
     public String register(RegisterRequest request) {
         String result;
 
-        if (!isExistingId(request.getEmail())) {
+        if (!isExistingEmail(request.getEmail())) {
             userRepo.save(User.builder()
                     .email(request.getEmail())
                     .password(request.getPassword())
@@ -41,7 +41,24 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String login(LoginRequest request) {
-        return null;
+        String result;
+        String email = request.getEmail();
+        String password = request.getPassword();
+
+        if (!isExistingEmail(email)) {
+            System.out.println("아이디가 존재하지 않음");
+            result = "3";
+        }
+        else if (!isValidPassword(email, password)) {
+            System.out.println("비밀번호가 올바르지 않음");
+            result = "2";
+        }
+        else {
+            System.out.println("로그인 성공");
+            result = "1";
+        }
+
+        return result;
     }
 
     public UserInfoResponse getUserInfo(String email) {
@@ -61,11 +78,22 @@ public class UserServiceImpl implements UserService {
         return userInfoResponse;
     }
 
-    private boolean isExistingId(String email) {   // 존재하는 email 인지 검사 (중복 여부)  true: 존재함  false: 존재하지 않음
+    private boolean isExistingEmail(String email) {   // 존재하는 email 인지 검사 (중복 여부)  true: 존재함  false: 존재하지 않음
         boolean result = false;
         Optional<User> user = userRepo.findByEmail(email);
 
         if (user.isPresent()) result = true;
+
+        return result;
+    }
+
+    private boolean isValidPassword(String email, String password) { // 유효한 비밀번호인지 검사
+        boolean result = false;
+        Optional<User> user = userRepo.findByEmail(email);
+
+        if (user.isPresent() && user.get().getPassword().equals(password)) {
+            result = true;
+        }
 
         return result;
     }
