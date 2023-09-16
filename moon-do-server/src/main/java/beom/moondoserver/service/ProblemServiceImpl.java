@@ -35,6 +35,7 @@ public class ProblemServiceImpl implements ProblemService {
                 + " 각 문제의 끝마다 ';'를 넣어 문제가 끝났음을 알려줘.";
 
         ChatGPTResponse chatGPTResponse = gptManager.getProblem(prompt);
+        insertProblemPaper(request);
         parseProblem(chatGPTResponse);
 
         return insertProblem(chatGPTResponse);
