@@ -70,8 +70,26 @@ public class ProblemServiceImpl implements ProblemService {
         return false;
     }
 
-    private boolean insertProblemPaper(ChatGPTResponse chatGPTResponse){
-        return true;
+    private boolean insertProblemPaper(CreateProblemRequest request){
+        Optional<User> optionalUser = userRepo.findById(1);
+        User user = optionalUser.get();
+
+        if (optionalUser.isPresent()){
+            problemPaperRepo.save(ProblemPaper.builder()
+                    .user(user)
+                    .title("dd")
+                    .field(request.getField())
+                    .detailedField(request.getDetailedField())
+                    .category(request.getCategory())
+                    .count(request.getCount())
+                    .difficulty(request.getDifficulty())
+                    .bookmarked(false)
+                    .build());
+            System.out.println("문제지 DB 저장 성공");
+            return true;
+        }
+        System.out.println("예외 발생, DB 저장 실패");
+        return false;
     }
 
     private List<String> parseProblem(ChatGPTResponse chatGPTResponse){
