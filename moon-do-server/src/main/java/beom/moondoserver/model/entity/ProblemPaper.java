@@ -11,6 +11,7 @@ import lombok.*;
 public class ProblemPaper {
     @Id
     @Column(nullable = false, name = "problem_paper_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer problemPaperId;
 
     @ManyToOne

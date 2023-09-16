@@ -1,5 +1,7 @@
 package beom.moondoserver.controller;
 
+import beom.moondoserver.model.dto.request.LoginRequest;
+import beom.moondoserver.model.dto.request.RegisterRequest;
 import beom.moondoserver.model.dto.response.UserInfoResponse;
 import beom.moondoserver.service.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,16 @@ public class UserController {
 
     public UserController(UserService userService) {
         this.userService = userService;
+    }
+
+    @PostMapping("/register")
+    public String register(@RequestBody RegisterRequest request) {
+        return userService.register(request);
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody LoginRequest request) {
+        return userService.login(request);
     }
 
     @GetMapping("/info")
