@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class CreateProblemRequest {
+    private String title;
     private String field;
     private String detailedField;
     private String category;
