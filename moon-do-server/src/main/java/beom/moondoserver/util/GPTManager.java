@@ -37,7 +37,7 @@ public class GPTManager {
                         .content("당신은 문제를 만들어주는 문제 출제자입니다.")
                         .build());
 
-        maxToken = 300;
+        maxToken = 1000;
         temperature = 0.0;
         topP = 1.0;
 

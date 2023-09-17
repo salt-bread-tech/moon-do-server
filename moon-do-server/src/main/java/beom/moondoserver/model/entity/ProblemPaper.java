@@ -36,6 +36,6 @@ public class ProblemPaper {
     @Column(name = "difficulty")
     Integer difficulty;
 
-    @Column(name = "bookmark", columnDefinition = "boolean default false")
-    Boolean bookmark;
+    @Column(name = "bookmarked", columnDefinition = "boolean default false")
+    Boolean bookmarked;
 }
