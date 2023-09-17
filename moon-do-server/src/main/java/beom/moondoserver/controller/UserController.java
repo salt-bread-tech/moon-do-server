@@ -31,9 +31,4 @@ public class UserController {
         return userService.getUserInfo(userId);
     }
 
-    @GetMapping("/infos")
-    public UserInfoResponse getUserInfo(@RequestParam("id") Integer userId) {
-        return userService.getUserInfo(userId);
-    }
-
 }
