@@ -8,6 +8,9 @@ import beom.moondoserver.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Optional;
 
 @Service
@@ -21,15 +24,23 @@ public class UserServiceImpl implements UserService {
         String result;
 
         if (!isExistingEmail(request.getEmail())) {
-            userRepo.save(User.builder()
-                    .email(request.getEmail())
-                    .password(request.getPassword())
-                    .nickname(request.getNickname())
-                    .introduction("")
-                    .build());
+            String salt = getSalt();
 
-            System.out.println("회원 가입 성공");
-            result = "1";
+            try {
+                userRepo.save(User.builder()
+                        .email(request.getEmail())
+                        .password(hashing(request.getPassword(), salt))
+                        .nickname(request.getNickname())
+                        .salt(salt)
+                        .introduction("")
+                        .build());
+
+                System.out.println("회원 가입 성공");
+                result = "1";
+            } catch (NoSuchAlgorithmException e) {
+                System.out.println("해싱 오류");
+                throw new RuntimeException(e);
+            }
         }
         else {
             System.out.println("회원 가입 실패: 아이디 중복");
@@ -78,6 +89,37 @@ public class UserServiceImpl implements UserService {
         return userInfoResponse;
     }
 
+    private String hashing(String password, String salt) throws NoSuchAlgorithmException {
+        byte[] passwordBytes = password.getBytes();
+        MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+
+        for (int i = 0; i < 100; i++) {
+            String str = byteToString(passwordBytes) + salt;
+            messageDigest.update(str.getBytes());
+            passwordBytes = messageDigest.digest();
+        }
+
+        return byteToString(passwordBytes);
+    }
+
+    private String getSalt() {
+        SecureRandom secureRandom = new SecureRandom();
+        byte[] bytes = new byte[16];
+        secureRandom.nextBytes(bytes);
+
+        return byteToString(bytes);
+    }
+
+    private String byteToString(byte[] bytes) {
+        StringBuilder sb = new StringBuilder();
+
+        for (byte a : bytes) {
+            sb.append(String.format("%02x", a));
+        }
+
+        return sb.toString();
+    }
+
     private boolean isExistingEmail(String email) {   // 존재하는 email 인지 검사 (중복 여부)  true: 존재함  false: 존재하지 않음
         boolean result = false;
         Optional<User> user = userRepo.findByEmail(email);
@@ -91,10 +133,17 @@ public class UserServiceImpl implements UserService {
         boolean result = false;
         Optional<User> user = userRepo.findByEmail(email);
 
-        if (user.isPresent() && user.get().getPassword().equals(password)) {
-            result = true;
+        if (user.isPresent()) {
+            String salt = user.get().getSalt();
+            try {
+                if (hashing(password, salt).equals(user.get().getPassword())) {
+                    result = true;
+                }
+            } catch (NoSuchAlgorithmException e) {
+                throw new RuntimeException(e);
+            }
         }
-//
+
         return result;
     }
 
