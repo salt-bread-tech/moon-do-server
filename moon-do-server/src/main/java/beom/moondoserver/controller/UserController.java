@@ -27,6 +27,11 @@ public class UserController {
     }
 
     @GetMapping("/info")
+    public UserInfoResponse getUserInfo(@RequestParam("id") String userId) {
+        return userService.getUserInfo(userId);
+    }
+
+    @GetMapping("/infos")
     public UserInfoResponse getUserInfo(@RequestParam("id") Integer userId) {
         return userService.getUserInfo(userId);
     }

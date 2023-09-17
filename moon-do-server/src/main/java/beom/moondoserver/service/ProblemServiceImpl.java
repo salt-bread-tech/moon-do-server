@@ -30,8 +30,8 @@ public class ProblemServiceImpl implements ProblemService {
         String prompt = request.getField() + " 분야의 " + request.getDetailedField() + "에 대한 "
                 + request.getCategory() + " 문제를 " + request.getDifficulty() + "의 난이도로 "
                 + request.getCount() + "개 만큼 출제해줘."
-                + " 문제의 답과 풀이는 각 문제의 뒤에 '\\n'을 넣어서 함께 출력해줘."
-                + " 문제: (문제) '\\n' 답: (답) '\\n' 풀이: (문제에 대한 풀이); 로 작성해줘."
+                + " 문제의 답과 풀이는 각 문제의 뒤에 '\\n'을 넣어서 함께 출력해줘." + " 문제를 작성할 때 절대 문제내용과 문제 번호 사이에 '\\n'을 넣지 말아줘."
+                + " (문제 번호와 문제): (문제를 작성) '\\n' 답: (답) '\\n' 풀이: (문제에 대한 풀이); 로 작성해줘."
                 + " 각 문제의 끝마다 ';'를 넣어 문제가 끝났음을 알려줘.";
 
         ChatGPTResponse chatGPTResponse = gptManager.getProblem(prompt);

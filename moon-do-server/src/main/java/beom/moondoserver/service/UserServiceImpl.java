@@ -15,9 +15,8 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepo userRepo;
+    private boolean result = false;
 
-    public UserInfoResponse getUserInfo(Integer userId) {
-        Optional<User> optionalUser = userRepo.findById(userId);
     @Override
     public String register(RegisterRequest request) {
         String result;
@@ -63,43 +62,46 @@ public class UserServiceImpl implements UserService {
         return result;
     }
 
+    @Override
+    public UserInfoResponse getUserInfo(Integer userId) {
+        return null;
+    }
+
     public UserInfoResponse getUserInfo(String email) {
-        Optional<User> optionalUser = userRepo.findByEmail(email);
-
+        //Optional<User> optionalUser = userRepo.findByEmail(email);
         UserInfoResponse userInfoResponse = new UserInfoResponse();
-
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-            userInfoResponse.setUserName(user.getNickname());
-            userInfoResponse.setIntroduction(user.getIntroduction());
-        }
-        else {
-            userInfoResponse.setUserName("닉네임");
-            userInfoResponse.setIntroduction("소개");
-        }
-
+//
+//        if (optionalUser.isPresent()) {
+//            User user = optionalUser.get();
+//            userInfoResponse.setUserName(user.getNickname());
+//            userInfoResponse.setIntroduction(user.getIntroduction());
+//        }
+//        else {
+//            userInfoResponse.setUserName("닉네임");
+//            userInfoResponse.setIntroduction("소개");
+//        }
+//
         return userInfoResponse;
     }
 
     private boolean isExistingEmail(String email) {   // 존재하는 email 인지 검사 (중복 여부)  true: 존재함  false: 존재하지 않음
-        boolean result = false;
-        Optional<User> user = userRepo.findByEmail(email);
-
-        if (user.isPresent()) result = true;
-
+//        boolean result = false;
+//        Optional<User> user = userRepo.findByEmail(email);
+//
+//        if (user.isPresent()) result = true;
+//
         return result;
     }
 
     private boolean isValidPassword(String email, String password) { // 유효한 비밀번호인지 검사
-        boolean result = false;
-        Optional<User> user = userRepo.findByEmail(email);
-
-        if (user.isPresent() && user.get().getPassword().equals(password)) {
-            result = true;
-        }
-
+//        boolean result = false;
+//        Optional<User> user = userRepo.findByEmail(email);
+//
+//        if (user.isPresent() && user.get().getPassword().equals(password)) {
+//            result = true;
+//        }
+//
         return result;
     }
 
-}
 }
