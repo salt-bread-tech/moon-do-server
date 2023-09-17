@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0cc1dbed-17ef-4a16-bcb8-18f94d8a703a" name="변경" comment="변경">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/repository/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/repository/UserRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/model/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -135,7 +133,7 @@
       <workItem from="1694253367172" duration="24000" />
       <workItem from="1694253555037" duration="1427000" />
       <workItem from="1694871698384" duration="2710000" />
-      <workItem from="1694929054293" duration="719000" />
+      <workItem from="1694929054293" duration="4467000" />
     </task>
     <servers />
   </component>
