@@ -27,12 +27,28 @@ public class ProblemServiceImpl implements ProblemService {
 
     @Override
     public boolean createProblem(CreateProblemRequest request) {
-        String prompt = request.getField() + " 분야의 " + request.getDetailedField() + "에 대한 "
+//        String prompt = request.getField() + " 분야의 " + request.getDetailedField() + "에 대한 "
+//                + request.getCategory() + " 문제를 " + request.getDifficulty() + "의 난이도로 "
+//                + request.getCount() + "개 만큼 출제해줘."
+//                + " 문제의 답과 풀이는 각 문제의 뒤에 '\\n'을 넣어서 함께 출력해줘." + " 문제를 작성할 때 절대 문제내용과 문제 번호 사이에 '\\n'을 넣지 말아줘."
+//                + " (문제 번호와 문제): (문제를 작성) '\\n' 답: (답) '\\n' 풀이: (문제에 대한 풀이); 로 작성해줘."
+//                + " 각 문제의 끝마다 ';'를 넣어 문제가 끝났음을 알려줘.";
+        int count = request.getCount() + 1;
+
+        String prompt = "당신은 문제를 출제하는 AI로서, 유저가 보내는 양식에 따라 문제지를 출력해주는 역할을 수행합니다." +
+                request.getField() + " 분야의 " + request.getDetailedField() + "에 대한 "
                 + request.getCategory() + " 문제를 " + request.getDifficulty() + "의 난이도로 "
-                + request.getCount() + "개 만큼 출제해줘."
-                + " 문제의 답과 풀이는 각 문제의 뒤에 '\\n'을 넣어서 함께 출력해줘." + " 문제를 작성할 때 절대 문제내용과 문제 번호 사이에 '\\n'을 넣지 말아줘."
-                + " (문제 번호와 문제): (문제를 작성) '\\n' 답: (답) '\\n' 풀이: (문제에 대한 풀이); 로 작성해줘."
-                + " 각 문제의 끝마다 ';'를 넣어 문제가 끝났음을 알려줘.";
+                + count + "개 만큼 출제해주세요.\n" +
+                " 위 템플릿을 기반으로 당신은 문제를 출제합니다. 당신의 대답에 대한 템플릿도 존재합니다. 당신의 대답을 가지고 서버에서는 데이터 파싱이 이루어질 예정입니다." +
+                " 따라서 반드시 템플릿에 맞게 문제를 출제해주어야 합니다. 문제 출제에 대한 템플릿은 다음과 같습니다.\n" +
+                "문제 번호: 문제에 대한 내용 \\n" +
+                "정답: 정답에 대한 내용 \\n" +
+                "풀이: 풀이에 대한 내용; \\n" +
+                "\n위와 같은 예시로 당신의 대답은 아래와 같이 이루어져야만 합니다. \n" +
+                "문제 1: 스택과 큐 자료구조의 주요 차이점에 대해 설명하세요.;\\n" +
+                "정답 1: 스택(Stack)은 후입선출(LIFO, Last-In-First-Out) 구조로 데이터를 저장하고 접근하는 자료구조입니다. 큐(Queue)는 선입선출(FIFO, First-In-First-Out) 구조로 데이터를 저장하고 접근하는 자료구조입니다.\\n" +
+                "풀이 1: 스택은 가장 최근에 추가된 항목을 먼저 제거하는 구조로, 데이터를 쌓고 꺼낼 때 역순으로 처리됩니다. 큐는 가장 먼저 추가된 항목을 먼저 제거하는 구조로, 데이터를 삽입한 순서대로 처리됩니다.;\\n" +
+                "의 템플릿을 바탕으로 문제를 출제해주세요.";
 
         ChatGPTResponse chatGPTResponse = gptManager.getProblem(prompt);
         insertProblemPaper(request);
@@ -72,13 +88,13 @@ public class ProblemServiceImpl implements ProblemService {
     }
 
     private boolean insertProblemPaper(CreateProblemRequest request){
-        Optional<User> optionalUser = userRepo.findById(1);
-        User user = optionalUser.get();
+        Optional<User> optionalUser = userRepo.findById(request.getUserId());
 
         if (optionalUser.isPresent()){
+            User user = optionalUser.get();
             problemPaperRepo.save(ProblemPaper.builder()
                     .user(user)
-                    .title("dd")
+                    .title(request.getTitle())
                     .field(request.getField())
                     .detailedField(request.getDetailedField())
                     .category(request.getCategory())

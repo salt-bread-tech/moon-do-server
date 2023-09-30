@@ -9,11 +9,9 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/3.1.1/aa13cb8ae0314bb67f9c75e66042a7001b5e406c/spring-boot-configuration-processor-3.1.1.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.28/a2ff5da8bcd8b1b26f36b806ced63213362c6dcc/lombok-1.18.28.jar" />
         </processorPath>
-        <module name="moon-do-server.main" />
+        <module name="moon-do-server.moon-do-server.main~1" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="17">
-      <module name="moon-do-server.moon-do-server" target="17" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="17" />
   </component>
 </project>
