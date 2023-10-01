@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+import static java.lang.Math.max;
+
 @Service
 @RequiredArgsConstructor
 public class ProblemServiceImpl implements ProblemService {
@@ -57,10 +59,14 @@ public class ProblemServiceImpl implements ProblemService {
         parseProblem(chatGPTResponse);
 
         if (insertProblem(chatGPTResponse)) {
-            Optional<ProblemPaper> problemPaper = problemPaperRepo.findAllById(userId);
+            List<ProblemPaper> problemPapers = problemPaperRepo.findAllByUserId(userId);
 
-            if (problemPaper.isPresent()) {
-                createProblemResponse.setProblemPaperId(problemPaper.get().getProblemPaperId());
+            if (problemPapers.size() > 0) {
+                int max = 0;
+
+                for (ProblemPaper p : problemPapers) {
+                    max = max(p.getProblemPaperId(), max);
+                }
             }
             else {
                 createProblemResponse.setProblemPaperId(0);
