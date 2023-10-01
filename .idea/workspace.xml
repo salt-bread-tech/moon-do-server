@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cc1dbed-17ef-4a16-bcb8-18f94d8a703a" name="변경" comment="변경">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/model/dto/request/CreateProblemRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/model/dto/request/CreateProblemRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/repository/ProblemPaperRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/repository/ProblemPaperRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/ProblemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/ProblemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/util/GPTManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/util/GPTManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,11 +84,11 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "C:/Users/user/OneDrive/바탕 화면/GitHub/plan-to-plant-server",
-    "project.structure.last.edited": "프로젝트",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "spring.configuration.checksum": "77c23a11bcf75ef78e09f3bc548e3889"
+    "spring.configuration.checksum": "8f494a380fcb078044d4b51805dcf77e"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -97,10 +96,10 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="애플리케이션.MoonDoServerApplication">
+  <component name="RunManager" selected="Spring Boot.MoonDoServerApplication (1)">
     <configuration name="MoonDoServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="beom.moondoserver.MoonDoServerApplication" />
-      <module name="moon-do-server.moon-do-server.main~1" />
+      <module name="moon-do-server.main" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="beom.moondoserver.*" />
@@ -148,7 +147,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="애플리케이션.MoonDoServerApplication" />
+        <item itemvalue="Application.MoonDoServerApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -167,6 +166,7 @@
       <workItem from="1694253555037" duration="1427000" />
       <workItem from="1694871698384" duration="2710000" />
       <workItem from="1694929054293" duration="4467000" />
+      <workItem from="1696141676146" duration="12364000" />
     </task>
     <servers />
   </component>
