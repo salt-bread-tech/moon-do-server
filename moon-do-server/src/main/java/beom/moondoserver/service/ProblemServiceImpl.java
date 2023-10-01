@@ -59,7 +59,7 @@ public class ProblemServiceImpl implements ProblemService {
         parseProblem(chatGPTResponse);
 
         if (insertProblem(chatGPTResponse)) {
-            List<ProblemPaper> problemPapers = problemPaperRepo.findAllByUserId(userId);
+            List<ProblemPaper> problemPapers = problemPaperRepo.findAllByUserUserId(userId);
 
             if (problemPapers.size() > 0) {
                 int max = 0;
@@ -76,13 +76,16 @@ public class ProblemServiceImpl implements ProblemService {
         return createProblemResponse;
     }
 
-    public List<GetProblemResponse> getProblem(GetProblemRequest request) {
-        List<GetProblemResponse> getProblemResponses = new ArrayList<>();
-        int problemPaperId = request.getProblemPaperId();
-        List<Problem> problems = problemRepo.findAllByProblemPaperId(problemPaperId);
+    public List<String> getProblem(GetProblemRequest request) {
+        List<String> getProblemResponses = new ArrayList<>();
+        Optional<ProblemPaper> problemPaper = problemPaperRepo.findById(request.getProblemPaperId());
 
-        for (Problem p: problems) {
-            getProblemResponses.add(new GetProblemResponse(p.getQuestion()));
+        if (problemPaper.isPresent()) {
+            List<Problem> problems = problemRepo.findAllByProblemPaperId(problemPaper.get());
+
+            for (Problem p: problems) {
+                getProblemResponses.add(p.getQuestion());
+            }
         }
 
         return getProblemResponses;
@@ -90,11 +93,14 @@ public class ProblemServiceImpl implements ProblemService {
 
     public List<GetSolutionResponse> getSolution(GetSolutionRequest request) {
         List<GetSolutionResponse> getSolutionResponses = new ArrayList<>();
-        int problemPaperId = request.getProblemPaperId();
-        List<Problem> problems = problemRepo.findAllByProblemPaperId(problemPaperId);
+        Optional<ProblemPaper> problemPaper = problemPaperRepo.findById(request.getProblemPaperId());
 
-        for (Problem p: problems) {
-            getSolutionResponses.add(new GetSolutionResponse(p.getAnswer(), p.getExplanation()));
+        if (problemPaper.isPresent()) {
+            List<Problem> problems = problemRepo.findAllByProblemPaperId(problemPaper.get());
+
+            for (Problem p: problems) {
+                getSolutionResponses.add(new GetSolutionResponse(p.getAnswer(), p.getExplanation()));
+            }
         }
 
         return getSolutionResponses;

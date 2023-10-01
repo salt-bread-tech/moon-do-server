@@ -8,5 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProblemPaperRepo extends JpaRepository<ProblemPaper, Integer> {
-    List<ProblemPaper> findAllByUserId(int userId);
+    List<ProblemPaper> findAllByUserUserId(Integer userId);
+    // Optional<ProblemPaper> findByProblemPaperId(Integer id);
 }

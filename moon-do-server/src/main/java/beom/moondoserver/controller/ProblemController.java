@@ -4,7 +4,6 @@ import beom.moondoserver.model.dto.request.CreateProblemRequest;
 import beom.moondoserver.model.dto.request.GetProblemRequest;
 import beom.moondoserver.model.dto.request.GetSolutionRequest;
 import beom.moondoserver.model.dto.response.CreateProblemResponse;
-import beom.moondoserver.model.dto.response.GetProblemResponse;
 import beom.moondoserver.model.dto.response.GetSolutionResponse;
 import beom.moondoserver.service.ProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +30,12 @@ public class ProblemController {
     }
 
     @PostMapping("/all")
-    public List<GetProblemResponse> getProblem(GetProblemRequest request) {
+    public List<String> getProblem(@RequestBody GetProblemRequest request) {
         return problemService.getProblem(request);
     }
 
     @PostMapping("/solution")
-    public List<GetSolutionResponse> getSolution(GetSolutionRequest request) {
+    public List<GetSolutionResponse> getSolution(@RequestBody GetSolutionRequest request) {
         return problemService.getSolution(request);
     }
 }

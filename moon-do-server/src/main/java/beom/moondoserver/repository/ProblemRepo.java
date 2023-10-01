@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ProblemRepo extends JpaRepository<Problem, Integer> {
-    List<Problem> findAllByProblemPaperId(int problemPaperId);
+    List<Problem> findAllByProblemPaperId(ProblemPaper problemPaperId);
 }
