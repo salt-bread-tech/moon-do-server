@@ -3,6 +3,7 @@ package beom.moondoserver.controller;
 import beom.moondoserver.model.dto.request.CreateProblemRequest;
 import beom.moondoserver.model.dto.request.GetProblemRequest;
 import beom.moondoserver.model.dto.request.GetSolutionRequest;
+import beom.moondoserver.model.dto.response.CreateProblemResponse;
 import beom.moondoserver.model.dto.response.GetProblemResponse;
 import beom.moondoserver.model.dto.response.GetSolutionResponse;
 import beom.moondoserver.service.ProblemService;
@@ -25,7 +26,7 @@ public class ProblemController {
     }
 
     @PostMapping("/creation")
-    public boolean createProblem(@RequestBody CreateProblemRequest request){
+    public CreateProblemResponse createProblem(@RequestBody CreateProblemRequest request){
         return problemService.createProblem(request);
     }
 

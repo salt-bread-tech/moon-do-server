@@ -26,7 +26,7 @@ public class ProblemServiceImpl implements ProblemService {
     private final ProblemPaperRepo problemPaperRepo;
 
     @Override
-    public boolean createProblem(CreateProblemRequest request) {
+    public CreateProblemResponse createProblem(CreateProblemRequest request) {
 //        String prompt = request.getField() + " 분야의 " + request.getDetailedField() + "에 대한 "
 //                + request.getCategory() + " 문제를 " + request.getDifficulty() + "의 난이도로 "
 //                + request.getCount() + "개 만큼 출제해줘."
@@ -34,6 +34,8 @@ public class ProblemServiceImpl implements ProblemService {
 //                + " (문제 번호와 문제): (문제를 작성) '\\n' 답: (답) '\\n' 풀이: (문제에 대한 풀이); 로 작성해줘."
 //                + " 각 문제의 끝마다 ';'를 넣어 문제가 끝났음을 알려줘.";
         int count = request.getCount() + 1;
+        int userId = request.getUserId();
+        CreateProblemResponse createProblemResponse = new CreateProblemResponse();
 
         String prompt = "당신은 문제를 출제하는 AI로서, 유저가 보내는 양식에 따라 문제지를 출력해주는 역할을 수행합니다." +
                 request.getField() + " 분야의 " + request.getDetailedField() + "에 대한 "
@@ -54,10 +56,22 @@ public class ProblemServiceImpl implements ProblemService {
         insertProblemPaper(request);
         parseProblem(chatGPTResponse);
 
-        return insertProblem(chatGPTResponse);
+        if (insertProblem(chatGPTResponse)) {
+            Optional<ProblemPaper> problemPaper = problemPaperRepo.findAllById(userId);
+
+            if (problemPaper.isPresent()) {
+                createProblemResponse.setProblemPaperId(problemPaper.get().getProblemPaperId());
+            }
+            else {
+                createProblemResponse.setProblemPaperId(0);
+            }
+        }
+
+        return createProblemResponse;
     }
 
     public List<GetProblemResponse> getProblem(GetProblemRequest request) {
+
         return null;
     }
 
