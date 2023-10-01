@@ -77,12 +77,27 @@ public class ProblemServiceImpl implements ProblemService {
     }
 
     public List<GetProblemResponse> getProblem(GetProblemRequest request) {
+        List<GetProblemResponse> getProblemResponses = new ArrayList<>();
+        int problemPaperId = request.getProblemPaperId();
+        List<Problem> problems = problemRepo.findAllByProblemPaperId(problemPaperId);
 
-        return null;
+        for (Problem p: problems) {
+            getProblemResponses.add(new GetProblemResponse(p.getQuestion()));
+        }
+
+        return getProblemResponses;
     }
 
     public List<GetSolutionResponse> getSolution(GetSolutionRequest request) {
-        return null;
+        List<GetSolutionResponse> getSolutionResponses = new ArrayList<>();
+        int problemPaperId = request.getProblemPaperId();
+        List<Problem> problems = problemRepo.findAllByProblemPaperId(problemPaperId);
+
+        for (Problem p: problems) {
+            getSolutionResponses.add(new GetSolutionResponse(p.getAnswer(), p.getExplanation()));
+        }
+
+        return getSolutionResponses;
     }
 
     private boolean insertProblem(ChatGPTResponse chatGPTResponse) {

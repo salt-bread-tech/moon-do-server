@@ -30,8 +30,8 @@ public class ProblemController {
         return problemService.createProblem(request);
     }
 
-    @PostMapping("/paper")
-    public List<GetProblemResponse> getProblemPaper(GetProblemRequest request) {
+    @PostMapping("/all")
+    public List<GetProblemResponse> getProblem(GetProblemRequest request) {
         return problemService.getProblem(request);
     }
 
