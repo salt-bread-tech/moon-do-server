@@ -2,6 +2,7 @@ package beom.moondoserver.service;
 
 import beom.moondoserver.model.dto.request.LoginRequest;
 import beom.moondoserver.model.dto.request.RegisterRequest;
+import beom.moondoserver.model.dto.response.LoginResponse;
 import beom.moondoserver.model.dto.response.UserInfoResponse;
 import beom.moondoserver.model.entity.User;
 import beom.moondoserver.repository.UserRepo;
@@ -51,22 +52,27 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String login(LoginRequest request) {
-        String result;
+    public LoginResponse login(LoginRequest request) {
+        LoginResponse result = new LoginResponse();
         String email = request.getEmail();
         String password = request.getPassword();
 
         if (!isExistingEmail(email)) {
             System.out.println("아이디가 존재하지 않음");
-            result = "3";
+            result.setCode("3");
+            result.setUserId(0);
         }
         else if (!isValidPassword(email, password)) {
             System.out.println("비밀번호가 올바르지 않음");
-            result = "2";
+            result.setCode("2");
+            result.setUserId(0);
         }
         else {
+            Optional<User> user = userRepo.findByEmail(email);
+            result.setCode("1");
+            user.ifPresent(value -> result.setUserId(value.getUserId()));
+
             System.out.println("로그인 성공");
-            result = "1";
         }
 
         return result;

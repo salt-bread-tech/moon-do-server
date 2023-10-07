@@ -2,6 +2,7 @@ package beom.moondoserver.controller;
 
 import beom.moondoserver.model.dto.request.LoginRequest;
 import beom.moondoserver.model.dto.request.RegisterRequest;
+import beom.moondoserver.model.dto.response.LoginResponse;
 import beom.moondoserver.model.dto.response.UserInfoResponse;
 import beom.moondoserver.service.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest request) {
+    public LoginResponse login(@RequestBody LoginRequest request) {
         return userService.login(request);
     }
 
