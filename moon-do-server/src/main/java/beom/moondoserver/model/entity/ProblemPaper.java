@@ -1,5 +1,7 @@
 package beom.moondoserver.model.entity;
 
+import beom.moondoserver.util.Difficulty;
+import beom.moondoserver.util.DifficultyConverter;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
@@ -38,7 +40,8 @@ public class ProblemPaper {
     Integer count;
 
     @Column(name = "difficulty")
-    Integer difficulty;
+    @Convert(converter = DifficultyConverter.class)
+    Difficulty difficulty;
 
     @Column(name = "bookmarked", columnDefinition = "boolean default false")
     Boolean bookmarked;

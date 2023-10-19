@@ -40,6 +40,7 @@ public class ProblemServiceImpl implements ProblemService {
                 + request.getCategory() + " 문제를 " + request.getDifficulty() + "의 난이도로 "
                 + request.getCount() + "개 만큼 출제하고 정답과 풀이를 함께 출력해주세요.\n";
 
+        System.out.println(request.getDifficulty());
         ChatGPTResponse chatGPTResponse = gptManager.getProblem(prompt);
         int problemPaperId = insertProblemPaper(request);
         insertProblem(chatGPTResponse, problemPaperId);
