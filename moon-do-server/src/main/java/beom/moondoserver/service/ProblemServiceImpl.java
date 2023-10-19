@@ -14,6 +14,13 @@ import beom.moondoserver.util.GPTManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -94,6 +101,8 @@ public class ProblemServiceImpl implements ProblemService {
 
     private int insertProblemPaper(CreateProblemRequest request){
         Optional<User> optionalUser = userRepo.findById(request.getUserId());
+        long currentMillis = System.currentTimeMillis();
+        Instant instant = Instant.ofEpochMilli(currentMillis);
 
         if (optionalUser.isPresent()){
             User user = optionalUser.get();
@@ -106,6 +115,7 @@ public class ProblemServiceImpl implements ProblemService {
                     .count(request.getCount())
                     .difficulty(request.getDifficulty())
                     .bookmarked(false)
+                    .date(instant.atZone(ZoneId.of("Asia/Seoul")).toLocalDateTime())
                     .build();
 
             problemPaperRepo.save(problemPaper);

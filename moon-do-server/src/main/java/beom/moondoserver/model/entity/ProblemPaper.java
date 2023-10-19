@@ -1,7 +1,11 @@
 package beom.moondoserver.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -38,4 +42,8 @@ public class ProblemPaper {
 
     @Column(name = "bookmarked", columnDefinition = "boolean default false")
     Boolean bookmarked;
+
+    @Column(name = "date")
+    @JsonFormat(timezone = "Asia/Seoul")
+    LocalDateTime date;
 }
