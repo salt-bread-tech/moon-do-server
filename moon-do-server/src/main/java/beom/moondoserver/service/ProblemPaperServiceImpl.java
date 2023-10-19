@@ -27,7 +27,7 @@ public class ProblemPaperServiceImpl implements ProblemPaperService{
             List<ProblemPaper> problemPapers = problemPaperRepo.findAllByUser_UserId(request.getUserId());
 
             for(ProblemPaper p : problemPapers){
-                getInfoResponses.add(new GetInfoResponse(p.getCount(), p.getTitle(), p.getField(), p.getDetailedField()));
+                getInfoResponses.add(new GetInfoResponse(p.getProblemPaperId(), p.getCount(), p.getTitle(), p.getField(), p.getDetailedField()));
             }
             System.out.println("Data Access Success");
             for (GetInfoResponse g : getInfoResponses) {

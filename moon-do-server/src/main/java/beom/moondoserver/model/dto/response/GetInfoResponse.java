@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class GetInfoResponse {
+    int problemPaperId;
     int count;
     String title;
     String field;
