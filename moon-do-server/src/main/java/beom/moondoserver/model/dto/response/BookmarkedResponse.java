@@ -6,10 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class GetInfoResponse {
+public class BookmarkedResponse {
     int problemPaperId;
     int count;
     String title;
