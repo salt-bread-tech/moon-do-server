@@ -10,20 +10,15 @@ import beom.moondoserver.model.entity.User;
 import beom.moondoserver.repository.ProblemPaperRepo;
 import beom.moondoserver.repository.ProblemRepo;
 import beom.moondoserver.repository.UserRepo;
+import beom.moondoserver.util.Difficulty;
+import beom.moondoserver.util.DifficultyConverter;
 import beom.moondoserver.util.GPTManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Service
 @RequiredArgsConstructor
@@ -36,11 +31,11 @@ public class ProblemServiceImpl implements ProblemService {
 
     @Override
     public CreateProblemResponse createProblem(CreateProblemRequest request) {
+        Difficulty df = Difficulty.ofValue(request.getDifficulty());
         String prompt = request.getField() + " 분야의 " + request.getDetailedField() + "에 대한 "
-                + request.getCategory() + " 문제를 " + request.getDifficulty() + "의 난이도로 "
+                + request.getCategory() + " 문제를 " + df + "의 난이도로 "
                 + request.getCount() + "개 만큼 출제하고 정답과 풀이를 함께 출력해주세요.\n";
 
-        System.out.println(request.getDifficulty());
         ChatGPTResponse chatGPTResponse = gptManager.getProblem(prompt);
         int problemPaperId = insertProblemPaper(request);
         insertProblem(chatGPTResponse, problemPaperId);
@@ -101,6 +96,7 @@ public class ProblemServiceImpl implements ProblemService {
     }
 
     private int insertProblemPaper(CreateProblemRequest request){
+        Difficulty df = Difficulty.ofValue(request.getDifficulty());
         Optional<User> optionalUser = userRepo.findById(request.getUserId());
         long currentMillis = System.currentTimeMillis();
         Instant instant = Instant.ofEpochMilli(currentMillis);
@@ -114,7 +110,7 @@ public class ProblemServiceImpl implements ProblemService {
                     .detailedField(request.getDetailedField())
                     .category(request.getCategory())
                     .count(request.getCount())
-                    .difficulty(request.getDifficulty())
+                    .difficulty(df)
                     .bookmarked(false)
                     .date(instant.atZone(ZoneId.of("Asia/Seoul")).toLocalDateTime())
                     .build();

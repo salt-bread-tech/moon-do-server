@@ -1,6 +1,5 @@
 package beom.moondoserver.model.dto.request;
 
-import beom.moondoserver.util.Difficulty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,5 +16,5 @@ public class CreateProblemRequest {
     private String detailedField;
     private String category;
     private Integer count;
-    private Difficulty difficulty;
+    private Integer difficulty;
 }
