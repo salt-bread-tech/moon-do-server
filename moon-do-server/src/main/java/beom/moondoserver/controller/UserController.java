@@ -2,6 +2,7 @@ package beom.moondoserver.controller;
 
 import beom.moondoserver.model.dto.request.LoginRequest;
 import beom.moondoserver.model.dto.request.RegisterRequest;
+import beom.moondoserver.model.dto.request.UserInfoRequest;
 import beom.moondoserver.model.dto.response.LoginResponse;
 import beom.moondoserver.model.dto.response.UserInfoResponse;
 import beom.moondoserver.service.UserService;
@@ -27,9 +28,9 @@ public class UserController {
         return userService.login(request);
     }
 
-    @GetMapping("/info")
-    public UserInfoResponse getUserInfo(@RequestParam("id") String userId) {
-        return userService.getUserInfo(userId);
+    @PostMapping("/info")
+    public UserInfoResponse getUserInfo(@RequestBody UserInfoRequest request) {
+        return userService.getUserInfo(request);
     }
 
 }

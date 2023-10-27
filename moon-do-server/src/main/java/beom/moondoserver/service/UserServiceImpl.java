@@ -2,6 +2,7 @@ package beom.moondoserver.service;
 
 import beom.moondoserver.model.dto.request.LoginRequest;
 import beom.moondoserver.model.dto.request.RegisterRequest;
+import beom.moondoserver.model.dto.request.UserInfoRequest;
 import beom.moondoserver.model.dto.response.LoginResponse;
 import beom.moondoserver.model.dto.response.UserInfoResponse;
 import beom.moondoserver.model.entity.User;
@@ -78,8 +79,8 @@ public class UserServiceImpl implements UserService {
         return result;
     }
 
-    public UserInfoResponse getUserInfo(String email) {
-        Optional<User> optionalUser = userRepo.findByEmail(email);
+    public UserInfoResponse getUserInfo(UserInfoRequest request) {
+        Optional<User> optionalUser = userRepo.findByUserId(request.getUserId());
         UserInfoResponse userInfoResponse = new UserInfoResponse();
 
         if (optionalUser.isPresent()) {
