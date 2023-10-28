@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cc1dbed-17ef-4a16-bcb8-18f94d8a703a" name="변경" comment="변경">
+      <change afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/model/dto/request/UserInfoRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/model/dto/request/CreateProblemRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/model/dto/request/CreateProblemRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/ProblemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/ProblemServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/util/Difficulty.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/util/Difficulty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/util/DifficultyConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/util/DifficultyConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/repository/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/repository/UserRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/moon-do-server/src/main/java/beom/moondoserver/service/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
