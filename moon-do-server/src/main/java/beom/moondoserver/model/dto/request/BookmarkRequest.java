@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BookmarkedRequest {
-    int userId;
+public class BookmarkRequest {
+    int problemPaperId;
 }

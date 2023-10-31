@@ -1,12 +1,12 @@
 package beom.moondoserver.controller;
 
-import beom.moondoserver.model.dto.request.BookmarkedRequest;
+import beom.moondoserver.model.dto.request.BookmarkRequest;
+import beom.moondoserver.model.dto.request.BookmarkedPaperRequest;
 import beom.moondoserver.model.dto.request.GetInfoRequest;
-import beom.moondoserver.model.dto.response.BookmarkedResponse;
+import beom.moondoserver.model.dto.response.BookmarkResponse;
+import beom.moondoserver.model.dto.response.BookmarkedPaperResponse;
 import beom.moondoserver.model.dto.response.GetInfoResponse;
 import beom.moondoserver.service.ProblemPaperService;
-import beom.moondoserver.service.ProblemPaperServiceImpl;
-import beom.moondoserver.service.ProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,8 +30,13 @@ public class ProblemPaperController {
         return problemPaperService.getInfo(request);
     }
 
-    @PostMapping("/bookmark")
-    public List<BookmarkedResponse> getBookmarkedProblemPaper(@RequestBody BookmarkedRequest request) {
+    @PostMapping("/bookmarked/info")
+    public List<BookmarkedPaperResponse> getBookmarkedProblemPaper(@RequestBody BookmarkedPaperRequest request) {
         return problemPaperService.getBookmarkedProblemPaper(request);
+    }
+
+    @PostMapping("/bookmark")
+    public BookmarkResponse bookmark(@RequestBody BookmarkRequest request) {
+        return problemPaperService.bookmark(request);
     }
 }

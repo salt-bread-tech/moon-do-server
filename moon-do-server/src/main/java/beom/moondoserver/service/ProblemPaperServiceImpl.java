@@ -1,8 +1,10 @@
 package beom.moondoserver.service;
 
-import beom.moondoserver.model.dto.request.BookmarkedRequest;
+import beom.moondoserver.model.dto.request.BookmarkRequest;
+import beom.moondoserver.model.dto.request.BookmarkedPaperRequest;
 import beom.moondoserver.model.dto.request.GetInfoRequest;
-import beom.moondoserver.model.dto.response.BookmarkedResponse;
+import beom.moondoserver.model.dto.response.BookmarkResponse;
+import beom.moondoserver.model.dto.response.BookmarkedPaperResponse;
 import beom.moondoserver.model.dto.response.GetInfoResponse;
 import beom.moondoserver.model.entity.ProblemPaper;
 import beom.moondoserver.model.entity.User;
@@ -45,15 +47,15 @@ public class ProblemPaperServiceImpl implements ProblemPaperService{
     }
 
     @Override
-    public List<BookmarkedResponse> getBookmarkedProblemPaper(BookmarkedRequest request) {
-        List<BookmarkedResponse> bookmarkedResponses = new ArrayList<>();
+    public List<BookmarkedPaperResponse> getBookmarkedProblemPaper(BookmarkedPaperRequest request) {
+        List<BookmarkedPaperResponse> bookmarkedPaperRespons = new ArrayList<>();
         Optional<User> optionalUser = userRepo.findById(request.getUserId());
 
         if (optionalUser.isPresent()) {
             List<ProblemPaper> problemPapers = problemPaperRepo.findAllByUser_UserIdAndBookmarkedIsTrue(request.getUserId());
 
             for (ProblemPaper p : problemPapers) {
-                bookmarkedResponses.add(BookmarkedResponse.builder()
+                bookmarkedPaperRespons.add(BookmarkedPaperResponse.builder()
                                 .problemPaperId(p.getProblemPaperId())
                                 .count(p.getCount())
                                 .title(p.getTitle())
@@ -65,6 +67,36 @@ public class ProblemPaperServiceImpl implements ProblemPaperService{
             System.out.println("유저가 존재하지 않습니다.");
         }
 
-        return bookmarkedResponses;
+        return bookmarkedPaperRespons;
+    }
+
+    @Override
+    public BookmarkResponse bookmark(BookmarkRequest request) {
+        BookmarkResponse response = new BookmarkResponse();
+        Optional<ProblemPaper> problemPaperOptional = problemPaperRepo.findById(request.getProblemPaperId());
+
+        if (problemPaperOptional.isPresent()) {
+            ProblemPaper problemPaper = problemPaperOptional.get();
+            response.setMessage("Successful processing");
+
+            if (problemPaper.getBookmarked()) {
+                System.out.println("북마크 해제");
+                problemPaper.setBookmarked(false);
+            }
+            else {
+                System.out.println("북마크 설정");
+                problemPaper.setBookmarked(true);
+            }
+
+            problemPaperRepo.save(problemPaper);
+            response.setBookmarked(problemPaper.getBookmarked());
+        }
+        else {
+            System.out.println("북마크 실패");
+            response.setMessage("Fail to bookmark");
+            response.setBookmarked(false);
+        }
+
+        return response;
     }
 }
