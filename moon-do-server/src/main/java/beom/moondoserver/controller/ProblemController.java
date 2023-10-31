@@ -1,16 +1,15 @@
 package beom.moondoserver.controller;
 
+import beom.moondoserver.model.dto.request.BookmarkRequest;
 import beom.moondoserver.model.dto.request.CreateProblemRequest;
 import beom.moondoserver.model.dto.request.GetProblemRequest;
 import beom.moondoserver.model.dto.request.GetSolutionRequest;
+import beom.moondoserver.model.dto.response.BookmarkResponse;
 import beom.moondoserver.model.dto.response.CreateProblemResponse;
 import beom.moondoserver.model.dto.response.GetSolutionResponse;
 import beom.moondoserver.service.ProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 

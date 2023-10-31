@@ -1,5 +1,6 @@
 package beom.moondoserver.service;
 
+import beom.moondoserver.model.dto.request.BookmarkRequest;
 import beom.moondoserver.model.dto.request.CreateProblemRequest;
 import beom.moondoserver.model.dto.request.GetProblemRequest;
 import beom.moondoserver.model.dto.request.GetSolutionRequest;
@@ -43,6 +44,7 @@ public class ProblemServiceImpl implements ProblemService {
         return new CreateProblemResponse(problemPaperId);
     }
 
+    @Override
     public List<String> getProblem(GetProblemRequest request) {
         List<String> getProblemResponses = new ArrayList<>();
         Optional<ProblemPaper> problemPaper = problemPaperRepo.findById(request.getProblemPaperId());
@@ -58,6 +60,7 @@ public class ProblemServiceImpl implements ProblemService {
         return getProblemResponses;
     }
 
+    @Override
     public List<GetSolutionResponse> getSolution(GetSolutionRequest request) {
         List<GetSolutionResponse> getSolutionResponses = new ArrayList<>();
         Optional<ProblemPaper> problemPaper = problemPaperRepo.findById(request.getProblemPaperId());
