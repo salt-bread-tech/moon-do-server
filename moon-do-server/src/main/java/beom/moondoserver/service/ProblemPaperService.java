@@ -1,9 +1,6 @@
 package beom.moondoserver.service;
 
-import beom.moondoserver.model.dto.request.BookmarkRequest;
-import beom.moondoserver.model.dto.request.BookmarkedPaperRequest;
-import beom.moondoserver.model.dto.request.DeleteRequest;
-import beom.moondoserver.model.dto.request.GetInfoRequest;
+import beom.moondoserver.model.dto.request.*;
 import beom.moondoserver.model.dto.response.BookmarkResponse;
 import beom.moondoserver.model.dto.response.BookmarkedPaperResponse;
 import beom.moondoserver.model.dto.response.GetInfoResponse;
@@ -17,4 +14,5 @@ public interface ProblemPaperService {
     List<BookmarkedPaperResponse> getBookmarkedProblemPaper(BookmarkedPaperRequest request);
     BookmarkResponse bookmark(BookmarkRequest request);
     boolean deleteProblemPaper(DeleteRequest request);
+    boolean clearAllProblemPaper(ClearRequest request);
 }

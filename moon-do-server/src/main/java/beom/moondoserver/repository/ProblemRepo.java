@@ -10,5 +10,4 @@ import java.util.List;
 
 public interface ProblemRepo extends JpaRepository<Problem, Integer> {
     List<Problem> findAllByProblemPaperId(ProblemPaper problemPaperId);
-    void deleteByProblemPaperId(ProblemPaper problemPaperId);
 }

@@ -1,19 +1,13 @@
 package beom.moondoserver.controller;
 
-import beom.moondoserver.model.dto.request.BookmarkRequest;
-import beom.moondoserver.model.dto.request.BookmarkedPaperRequest;
-import beom.moondoserver.model.dto.request.DeleteRequest;
-import beom.moondoserver.model.dto.request.GetInfoRequest;
+import beom.moondoserver.model.dto.request.*;
 import beom.moondoserver.model.dto.response.BookmarkResponse;
 import beom.moondoserver.model.dto.response.BookmarkedPaperResponse;
 import beom.moondoserver.model.dto.response.GetInfoResponse;
 import beom.moondoserver.model.entity.ProblemPaper;
 import beom.moondoserver.service.ProblemPaperService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -45,5 +39,10 @@ public class ProblemPaperController {
     @PostMapping("/deletion")
     public boolean deleteProblemPaper(@RequestBody DeleteRequest request){
         return problemPaperService.deleteProblemPaper(request);
+    }
+
+    @PostMapping("/clear")
+    public boolean clearAllProblemPaper(@RequestBody ClearRequest request){
+        return problemPaperService.clearAllProblemPaper(request);
     }
 }

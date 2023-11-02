@@ -1,9 +1,6 @@
 package beom.moondoserver.service;
 
-import beom.moondoserver.model.dto.request.BookmarkRequest;
-import beom.moondoserver.model.dto.request.BookmarkedPaperRequest;
-import beom.moondoserver.model.dto.request.DeleteRequest;
-import beom.moondoserver.model.dto.request.GetInfoRequest;
+import beom.moondoserver.model.dto.request.*;
 import beom.moondoserver.model.dto.response.BookmarkResponse;
 import beom.moondoserver.model.dto.response.BookmarkedPaperResponse;
 import beom.moondoserver.model.dto.response.GetInfoResponse;
@@ -108,6 +105,19 @@ public class ProblemPaperServiceImpl implements ProblemPaperService{
         if (optionalUser.isPresent()){
             problemPaperRepo.deleteById(request.getProblemPaperId());
             System.out.println("성공적으로 문제지가 삭제 되었습니다.");
+            return true;
+        }
+        System.out.println("문제지 삭제 중 오류 발생");
+        return false;
+    }
+
+    @Override
+    public boolean clearAllProblemPaper(ClearRequest request) {
+        Optional<User> optionalUser = userRepo.findById(request.getUserId());
+        
+        if (optionalUser.isPresent()){
+            problemPaperRepo.deleteAll();
+            System.out.println("모든 문제지가 성공적으로 삭제 되었습니다.");
             return true;
         }
         System.out.println("문제지 삭제 중 오류 발생");
