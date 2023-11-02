@@ -123,4 +123,19 @@ public class ProblemPaperServiceImpl implements ProblemPaperService{
         System.out.println("문제지 삭제 중 오류 발생");
         return false;
     }
+
+    @Override
+    public boolean selectDeleteProblemPaper(SelectDeleteRequest request) {
+        Optional<User> optionalUser = userRepo.findById(request.getUserId());
+
+        if(optionalUser.isPresent()){
+            for (int ids : request.getProblemPaperIds()) {
+                problemPaperRepo.deleteById(ids);
+            }
+            System.out.println("선택한 문제지가 성공적으로 삭제 되었습니다.");
+            return true;
+        }
+        System.out.println("선택 문제 삭제 오류 발생!!");
+        return false;
+    }
 }

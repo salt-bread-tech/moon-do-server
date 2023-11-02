@@ -45,4 +45,9 @@ public class ProblemPaperController {
     public boolean clearAllProblemPaper(@RequestBody CleanUpRequest request){
         return problemPaperService.cleanUpProblemPaper(request);
     }
+
+    @PostMapping("/selection")
+    public boolean selectDeleteProblemPaper(@RequestBody SelectDeleteRequest request){
+        return problemPaperService.selectDeleteProblemPaper(request);
+    }
 }
