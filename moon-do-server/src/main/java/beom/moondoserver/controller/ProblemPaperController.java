@@ -2,10 +2,12 @@ package beom.moondoserver.controller;
 
 import beom.moondoserver.model.dto.request.BookmarkRequest;
 import beom.moondoserver.model.dto.request.BookmarkedPaperRequest;
+import beom.moondoserver.model.dto.request.DeleteRequest;
 import beom.moondoserver.model.dto.request.GetInfoRequest;
 import beom.moondoserver.model.dto.response.BookmarkResponse;
 import beom.moondoserver.model.dto.response.BookmarkedPaperResponse;
 import beom.moondoserver.model.dto.response.GetInfoResponse;
+import beom.moondoserver.model.entity.ProblemPaper;
 import beom.moondoserver.service.ProblemPaperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,5 +40,10 @@ public class ProblemPaperController {
     @PostMapping("/bookmark")
     public BookmarkResponse bookmark(@RequestBody BookmarkRequest request) {
         return problemPaperService.bookmark(request);
+    }
+
+    @PostMapping("/deletion")
+    public boolean deleteProblemPaper(@RequestBody DeleteRequest request){
+        return problemPaperService.deleteProblemPaper(request);
     }
 }

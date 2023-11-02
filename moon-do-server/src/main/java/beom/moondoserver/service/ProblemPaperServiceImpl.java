@@ -2,6 +2,7 @@ package beom.moondoserver.service;
 
 import beom.moondoserver.model.dto.request.BookmarkRequest;
 import beom.moondoserver.model.dto.request.BookmarkedPaperRequest;
+import beom.moondoserver.model.dto.request.DeleteRequest;
 import beom.moondoserver.model.dto.request.GetInfoRequest;
 import beom.moondoserver.model.dto.response.BookmarkResponse;
 import beom.moondoserver.model.dto.response.BookmarkedPaperResponse;
@@ -34,7 +35,7 @@ public class ProblemPaperServiceImpl implements ProblemPaperService{
                 getInfoResponses.add(new GetInfoResponse(p.getProblemPaperId()
                         , p.getCount(), p.getTitle()
                         , p.getField(), p.getDetailedField()
-                ,p.getDate()));
+                        , p.getDate()));
             }
             System.out.println("Data Access Success");
             for (GetInfoResponse g : getInfoResponses) {
@@ -48,14 +49,14 @@ public class ProblemPaperServiceImpl implements ProblemPaperService{
 
     @Override
     public List<BookmarkedPaperResponse> getBookmarkedProblemPaper(BookmarkedPaperRequest request) {
-        List<BookmarkedPaperResponse> bookmarkedPaperRespons = new ArrayList<>();
+        List<BookmarkedPaperResponse> bookmarkedPaperResponse = new ArrayList<>();
         Optional<User> optionalUser = userRepo.findById(request.getUserId());
 
         if (optionalUser.isPresent()) {
             List<ProblemPaper> problemPapers = problemPaperRepo.findAllByUser_UserIdAndBookmarkedIsTrue(request.getUserId());
 
             for (ProblemPaper p : problemPapers) {
-                bookmarkedPaperRespons.add(BookmarkedPaperResponse.builder()
+                bookmarkedPaperResponse.add(BookmarkedPaperResponse.builder()
                                 .problemPaperId(p.getProblemPaperId())
                                 .count(p.getCount())
                                 .title(p.getTitle())
@@ -67,7 +68,7 @@ public class ProblemPaperServiceImpl implements ProblemPaperService{
             System.out.println("유저가 존재하지 않습니다.");
         }
 
-        return bookmarkedPaperRespons;
+        return bookmarkedPaperResponse;
     }
 
     @Override
@@ -98,5 +99,18 @@ public class ProblemPaperServiceImpl implements ProblemPaperService{
         }
 
         return response;
+    }
+
+    @Override
+    public boolean deleteProblemPaper(DeleteRequest request) {
+        Optional<User> optionalUser = userRepo.findById(request.getUserId());
+
+        if (optionalUser.isPresent()){
+            problemPaperRepo.deleteById(request.getProblemPaperId());
+            System.out.println("성공적으로 문제지가 삭제 되었습니다.");
+            return true;
+        }
+        System.out.println("문제지 삭제 중 오류 발생");
+        return false;
     }
 }
