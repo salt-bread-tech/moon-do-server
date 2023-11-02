@@ -14,5 +14,5 @@ public interface ProblemPaperService {
     List<BookmarkedPaperResponse> getBookmarkedProblemPaper(BookmarkedPaperRequest request);
     BookmarkResponse bookmark(BookmarkRequest request);
     boolean deleteProblemPaper(DeleteRequest request);
-    boolean clearAllProblemPaper(ClearRequest request);
+    boolean cleanUpProblemPaper(CleanUpRequest request);
 }

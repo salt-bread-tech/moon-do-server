@@ -42,7 +42,7 @@ public class ProblemPaperController {
     }
 
     @PostMapping("/clear")
-    public boolean clearAllProblemPaper(@RequestBody ClearRequest request){
-        return problemPaperService.clearAllProblemPaper(request);
+    public boolean clearAllProblemPaper(@RequestBody CleanUpRequest request){
+        return problemPaperService.cleanUpProblemPaper(request);
     }
 }

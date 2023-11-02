@@ -112,7 +112,7 @@ public class ProblemPaperServiceImpl implements ProblemPaperService{
     }
 
     @Override
-    public boolean clearAllProblemPaper(ClearRequest request) {
+    public boolean cleanUpProblemPaper(CleanUpRequest request) {
         Optional<User> optionalUser = userRepo.findById(request.getUserId());
         
         if (optionalUser.isPresent()){
